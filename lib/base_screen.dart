@@ -2,17 +2,19 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
 
-class BackgroundShaderScreen extends StatelessWidget {
-  const BackgroundShaderScreen({super.key});
+class BaseShaderScreen extends StatelessWidget {
+  final String shaderKey;
+  const BaseShaderScreen({required this.shaderKey,super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const _BackgroundShaderScreen();
+    return _BackgroundShaderScreen(shaderKey: shaderKey,);
   }
 }
 
 class _BackgroundShaderScreen extends StatefulWidget {
-  const _BackgroundShaderScreen({super.key});
+  final String shaderKey;
+  const _BackgroundShaderScreen({required this.shaderKey,super.key});
 
   @override
   State<_BackgroundShaderScreen> createState() =>
@@ -24,7 +26,7 @@ class _BackgroundShaderScreenState extends State<_BackgroundShaderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ShaderBuilder(
-        assetKey: 'shaders/bg.frag',
+        assetKey: 'shaders/${widget.shaderKey}',
             (context, shader, child) => CustomPaint(
           size: MediaQuery.of(context).size,
           painter: ShaderPainter(

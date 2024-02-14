@@ -6,7 +6,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _HomeScreen();
+    return const _HomeScreen();
   }
 }
 
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<_HomeScreen> {
           child: Column(
             children: [
               ElevatedButton(
-                onPressed: ()=>context.go('/bg'),
+                onPressed: ()=>context.go('/shaders',extra: 'bg.frag'),
                 child: const Text('Background Shader'),
               ),
             ],
