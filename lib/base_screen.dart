@@ -44,7 +44,7 @@ class _BackgroundShaderScreenState extends State<_BackgroundShaderScreen> {
       case 'bg.frag':
       return BackgroundPainter(shader: shader,color: Colors.green);
       case 'gradient.frag':
-      return GradientPainter(shader: shader);
+      return GradientPainter(shader: shader,color1: Colors.blue,color2: Colors.white);
       default:
       return BackgroundPainter(shader: shader,color: Colors.red);
     }
