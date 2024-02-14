@@ -42,11 +42,11 @@ class _BackgroundShaderScreenState extends State<_BackgroundShaderScreen> {
   CustomPainter shaderKeyToPainter(String key,FragmentShader shader){
     switch(key){
       case 'bg.frag':
-      return BackgroundPainter(shader: shader);
+      return BackgroundPainter(shader: shader,color: Colors.green);
       case 'gradient.frag':
       return GradientPainter(shader: shader);
       default:
-      return BackgroundPainter(shader: shader);
+      return BackgroundPainter(shader: shader,color: Colors.red);
     }
   }
 }
