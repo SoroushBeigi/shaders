@@ -26,8 +26,16 @@ class _HomeScreenState extends State<_HomeScreen> {
           child: Column(
             children: [
               ElevatedButton(
-                onPressed: ()=>context.go('/shaders',extra: 'bg.frag'),
+                onPressed: ()=>context.push('/shaders',extra: 'bg.frag'),
                 child: const Text('Background Shader'),
+              ),
+              ElevatedButton(
+                onPressed: ()=>context.push('/shaders',extra: 'gradient.frag'),
+                child: const Text('Gradient Shader'),
+              ),
+              ElevatedButton(
+                onPressed: ()=>context.push('/shaders',extra: 'cellular_noise.frag'),
+                child: const Text('Cellular Noise Shader'),
               ),
             ],
           ),

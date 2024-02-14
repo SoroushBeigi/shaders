@@ -1,10 +1,11 @@
-import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_shaders/flutter_shaders.dart';
+import 'package:shaders/painters/bg_painter.dart';
+import 'package:shaders/painters/gradient_painter.dart';
 
-class BaseShaderScreen extends StatelessWidget {
+class BaseScreen extends StatelessWidget {
   final String shaderKey;
-  const BaseShaderScreen({required this.shaderKey,super.key});
+  const BaseScreen({required this.shaderKey,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,7 @@ class _BackgroundShaderScreenState extends State<_BackgroundShaderScreen> {
         assetKey: 'shaders/${widget.shaderKey}',
             (context, shader, child) => CustomPaint(
           size: MediaQuery.of(context).size,
-          painter: ShaderPainter(
-            shader: shader,
-          ),
+          painter: shaderKeyToPainter(widget.shaderKey,shader)
         ),
         child: const Center(
           child: CircularProgressIndicator(),
@@ -39,22 +38,17 @@ class _BackgroundShaderScreenState extends State<_BackgroundShaderScreen> {
       ),
     );
   }
-}
 
-class ShaderPainter extends CustomPainter {
-  ui.FragmentShader shader;
-
-  ShaderPainter({required this.shader});
-
-  @override
-  void paint(ui.Canvas canvas, ui.Size size) {
-    final paint = Paint()..shader = shader;
-    canvas.drawRect(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      paint,
-    );
+  CustomPainter shaderKeyToPainter(String key,FragmentShader shader){
+    switch(key){
+      case 'bg.frag':
+      return BackgroundPainter(shader: shader);
+      case 'gradient.frag':
+      return GradientPainter(shader: shader);
+      default:
+      return BackgroundPainter(shader: shader);
+    }
   }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
+
+

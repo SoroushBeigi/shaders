@@ -16,7 +16,7 @@ final router = GoRouter(
       path: '/shaders',
       builder: (context, state) {
         final key = (state.extra as String?) ?? 'bg.frag';
-        return BaseShaderScreen(shaderKey: key);
+        return BaseScreen(shaderKey: key);
       },
     ),
   ],

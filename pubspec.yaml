@@ -61,6 +61,7 @@ flutter:
   uses-material-design: true
   shaders:
     - shaders/bg.frag
+    - shaders/gradient.frag
 
   # To add assets to your application, add an assets section, like this:
   # assets:

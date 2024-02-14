@@ -1,4 +1,3 @@
-uniform vec2 resolution;
 out vec4 fragColor;
 
 void main() {
