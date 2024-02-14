@@ -33,10 +33,6 @@ class _HomeScreenState extends State<_HomeScreen> {
                 onPressed: ()=>context.push('/shaders',extra: 'gradient.frag'),
                 child: const Text('Gradient Shader'),
               ),
-              ElevatedButton(
-                onPressed: ()=>context.push('/shaders',extra: 'cellular_noise.frag'),
-                child: const Text('Cellular Noise Shader'),
-              ),
             ],
           ),
         ),
